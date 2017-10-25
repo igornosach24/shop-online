@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Person List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h2 th:text="${complete} ? 'Successful purchase!'"></h2>
+<h1>Products List</h1>
+<form action="/addProduct" method="post">
+<select name="product"  title="product">
+    <option value="Display">Display</option>
+    <option value="Accessories">Accessories</option>
+    <option value="InputDevice">Input device</option>
+    <option value="Peripherals">Peripherals</option>
+    <option value="StorageDevice">Storage device</option>
+</select>
+<input type="submit" value="Create"/>
+</form>
+
+<a href="soldProducts">Sold products</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Detail</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Buy</th>
+        </tr>
+        <tr th:each ="product : ${products}">
+            <td th:text="${product.getId()}">...</td>
+            <td th:utext="${product.getType()}">...</td>
+            <td th:utext="${product.getAmount()}">...</td>
+            <td th:utext="${product.getPrice()}">...</td>
+            <td th:utext="${product}">...</td>
+            <td> <a th:href="@{/product/edit/{id}/(id=${product.getId()})}">Edit</a></td>
+            <td> <a th:href="@{/product/delete/{id}/(id=${product.getId()})}">Delete</a></td>
+            <td> <a th:href="@{/product/buy/{id}/(id=${product.getId()})}">Buy</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

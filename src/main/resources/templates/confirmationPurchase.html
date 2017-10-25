@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+Do you want to buy this product?
+<div>
+    <table border="1">
+        <tr><th>Id</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Discount</th>
+            <th>Price</th>
+            <th>Price for sale</th>
+            <th>Detail</th>
+        </tr>
+
+        <tr>
+            <td th:utext="${check.getId_product()}">...</td>
+            <td th:text="${check.getAmount()}">...</td>
+            <td th:utext="${check.getDateSale()}">...</td>
+            <td th:utext="${check.getDiscount()}">...</td>
+            <td th:utext="${check.getPrice()}">...</td>
+            <td th:utext="${check.getPriceForSale()}">...</td>
+            <td th:utext="${check}">...</td>
+        </tr>
+
+    </table>
+
+        ...
+
+    <td> <a th:href="@{/product/buy/yes/{id}/(id=${check.getId_product()})}">YES!</a></td>
+</div>
+
+</body>
+</html>
