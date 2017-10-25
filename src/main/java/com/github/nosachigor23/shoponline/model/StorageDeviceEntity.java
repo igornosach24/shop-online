@@ -8,61 +8,88 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "storage_device")
-@DiscriminatorValue("storage_device")
 public class StorageDeviceEntity extends AProductEntity implements Serializable {
 
 
-    @Column(name = "manufacturer")
-    private String manufacturer;
+	@Column(name = "manufacturer")
+	private String manufacturer;
 
-    @Column(name = "speed")
-    private int speed;
+	@Column(name = "speed")
+	private int speed;
 
-    @Column(name = "discount")
-    private int discount;
+	@Column(name = "discount")
+	private int discount = getDiscount();
 
-    public StorageDeviceEntity() {
-        this.type = "storageDevice";
 
-    }
+	public StorageDeviceEntity() {
+		this.type = "storageDevice";
 
-    public StorageDeviceEntity(String manufacturer, int speed) {
-        this.manufacturer = manufacturer;
-        this.speed = speed;
-        this.discount = calculateDiscount(this);
-        setType(ProductType.Storage_device);
-    }
+	}
 
-    {
+	public StorageDeviceEntity(String manufacturer, int speed) {
 
-    }
+		this.manufacturer = manufacturer;
 
-    public String getManufacturer() {
-        return manufacturer;
-    }
+		this.speed = speed;
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
+	}
 
-    public int getSpeed() {
-        return speed;
-    }
+	public String getManufacturer() {
+		return manufacturer;
+	}
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
 
-    public int getDiscount() {
-        return discount;
-    }
+	public int getSpeed() {
+		return speed;
+	}
 
-    @Override
-    public String toString() {
-        return "StorageDeviceEntity{" +
-                "manufacturer='" + manufacturer + '\'' +
-                ", speed=" + speed +
-                ", discount=" + discount +
-                '}';
-    }
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	public int getDiscount() {
+		return discount;
+	}
+
+	@Override
+	public String toString() {
+		return "StorageDevice{" +
+				"manufacturer='" + manufacturer + '\'' +
+				", speed=" + speed +
+				", discount=" + discount +
+				", producing_country='" + producing_country + '\'' +
+				'}';
+	}
+
+	@Override
+	protected int calculateDiscountForProduct() {
+
+		if (!day.matches("THURSDAY|FRIDAY|SATURADY")){
+
+			return 0;
+
+		}
+
+		final int defaultValue = 10;
+
+		final 	String manufacturer = getManufacturer();
+
+		if (manufacturer.equalsIgnoreCase("kingston")) {
+
+			return defaultValue / 2;
+
+		}
+
+		else if (manufacturer.equalsIgnoreCase("samsung")) {
+
+			return defaultValue / 3;
+
+		}
+
+		else return defaultValue;
+
+	}
 }

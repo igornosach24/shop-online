@@ -9,60 +9,80 @@ import java.io.Serializable;
 @Table(name = "accessories")
 public class AccessoriesEntity extends AProductEntity implements Serializable {
 
-    {
-        this.type = "accessories";
-    }
+	@Column(name = "info")
+	private String info;
 
-    @Column(name = "info")
-    private String info;
+	@Column(name = "kind")
+	private String kind;
 
-    @Column(name = "kind")
-    private String kind;
+	@Column(name = "discount")
+	private int discount = getDiscount();
 
-    @Column(name = "discount")
-    private int discount;
+	{
+		this.type = "accessories";
+	}
 
-    public AccessoriesEntity() {
-    }
+	public AccessoriesEntity() {
+	}
 
-    public AccessoriesEntity(String info, String kind) {
-        this.info = info;
-        this.kind = kind;
-        this.discount = calculateDiscount(this);
-    }
+	public AccessoriesEntity(String info, String kind) {
+		this.info = info;
+		this.kind = kind;
 
-    public String getInfo() {
-        return info;
-    }
+	}
 
-    public void setInfo(String info) {
-        this.info = info;
-    }
+	public String getInfo() {
+		return info;
+	}
 
-    public String getKind() {
-        return kind;
-    }
+	public void setInfo(String info) {
+		this.info = info;
+	}
 
-    public void setKind(String kind) {
-        this.kind = kind;
-    }
+	public String getKind() {
+		return kind;
+	}
 
-    public int getDiscount() {
-        return discount;
-    }
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public int getDiscount() {
+		return discount;
+	}
+
+	/*
+
+    For accessories, the discount is equal to the default value
+
+	 */
+
+	@Override
+	protected int calculateDiscountForProduct() {
+
+		if(!day.matches("SUNDAY|MONDAY|FRIDAY")){
+
+			return 0;
+
+		}
+
+		return DEFAULT_DISCOUNT_FOR_ALL_PRODUCTS;
+
+	}
+
+	@Override
+	public String toString() {
+		return "AccessoriesEntity{" +
+				", id=" + id +
+				"info='" + info + '\'' +
+				", kind='" + kind + '\'' +
+				", discount=" + discount +
+				", amount=" + amount +
+				", type='" + type + '\'' +
+				", producing_country='" + producing_country + '\'' +
+				", price=" + price +
+				'}';
+	}
 
 
-    @Override
-    public String toString() {
-        return "AccessoriesEntity{" +
-                ", id=" + id +
-                "info='" + info + '\'' +
-                ", kind='" + kind + '\'' +
-                ", discount=" + discount +
-                ", amount=" + amount +
-                ", type='" + type + '\'' +
-                ", producing_country='" + producing_country + '\'' +
-                ", price=" + price +
-                '}';
-    }
 }

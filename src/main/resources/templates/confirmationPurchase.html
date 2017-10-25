@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-Do you want to buy this product?
+<h3>Do you want to buy this product?</h3>
 <div>
     <table border="1">
         <tr><th>Id</th>
@@ -24,7 +24,7 @@ Do you want to buy this product?
             <td th:utext="${check.getDiscount()}">...</td>
             <td th:utext="${check.getPrice()}">...</td>
             <td th:utext="${check.getPriceForSale()}">...</td>
-            <td th:utext="${check}">...</td>
+            <td th:utext="${check.getInfo()}">...</td>
         </tr>
 
     </table>

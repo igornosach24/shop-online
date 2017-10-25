@@ -1,53 +1,48 @@
 package com.github.nosachigor23.shoponline.contrloller;
 
-import com.github.nosachigor23.shoponline.model.*;
+import com.github.nosachigor23.shoponline.model.AProductEntity;
 import com.github.nosachigor23.shoponline.model.ProductFactory.FactoryException;
 import com.github.nosachigor23.shoponline.model.ProductFactory.ProductFactory;
-import com.github.nosachigor23.shoponline.repositories.CheckRepository;
 import com.github.nosachigor23.shoponline.repositories.ProductsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class AddController {
 
-    private   final ProductsRepository productsRepository;
+	private static final Logger LOG = Logger.getLogger(AddController.class);
 
-    public AddController(ProductsRepository productsRepository) {
-        this.productsRepository = productsRepository;
-    }
+	private final ProductsRepository productsRepository;
 
-
-    @ModelAttribute("productInstance")
-    public AProductEntity getProductInstance(@RequestParam(value="product",required = false) String product) throws FactoryException {
-       return ProductFactory.getProductInst(product);
-    }
-
-    @RequestMapping(value = "save",method = RequestMethod.POST)
-    public   String saveProduct(@ModelAttribute("productInstance")AProductEntity aProductEntity, @CookieValue("edit") String edit, HttpSession session) throws IllegalAccessException, InstantiationException {
-
-        if (edit.equalsIgnoreCase("true")){
-            AProductEntity aProductEntity1= productsRepository.findOne(aProductEntity.getId()-1);
-            if(aProductEntity1!=null)productsRepository.save(aProductEntity1);
-
-        }
-        productsRepository.save(aProductEntity);
+	public AddController(ProductsRepository productsRepository) {
+		this.productsRepository = productsRepository;
+	}
 
 
-        return  "redirect:/";
-    }
+	@ModelAttribute("productInstance")
+	public AProductEntity getProductInstance(@RequestParam(value = "product", required = false) String product,
+	                                         @RequestParam(value = "id", required = false) Integer edit)
+			throws FactoryException {
+		if (edit != null) {
+			return productsRepository.findOne(edit);
+		}
+
+		return ProductFactory.getProductInst(product);
+	}
+
+	@RequestMapping(value = "save", method = RequestMethod.POST)
+	public String saveProduct(@ModelAttribute("productInstance") AProductEntity aProductEntity)
+			throws IllegalAccessException, InstantiationException {
+
+		productsRepository.save(aProductEntity);
+
+		LOG.error(productsRepository + "was created");
+
+		return "redirect:/";
+
+	}
 
 }

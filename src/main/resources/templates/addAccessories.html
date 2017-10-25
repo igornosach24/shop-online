@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<h2 th:text="${edit} ? 'Edit product' : 'Add product'"></h2>
+<h2 th:text="${edit} ? 'Edit product' : 'Add accessories'"></h2>
 
 <form action="#" th:action="@{/save}" th:object="${productInstance}" method="post">
     <p>amount: <input type="text" th:field="*{amount}" /></p>
@@ -15,6 +15,9 @@
     <p>info: <input type="text" th:field="*{info}" /></p>
     <p>kind: <input type="text" th:field="*{kind}" /></p>
     <input type="hidden" name="product" value="accessories"/>
+    <div  th:if="${edit}">
+        <input type="hidden" name="id" th:value="${productInstance.getId()}" />
+    </div>
     <p><input type="submit" value="Submit"/></p>
 </form>
 <a th:href="@{/}">Back to home</a>

@@ -12,72 +12,69 @@ import java.io.Serializable;
 @DiscriminatorValue("display")
 public class DisplayEntity extends AProductEntity implements Serializable {
 
-    private static final long serialVersionUID = -659550364568648117L;
+	private static final long serialVersionUID = -659550364568648117L;
+
+	@Column(name = "diagonal")
+	private int diagonal;
+
+	@Column(name = "model")
+	private String model;
+
+	@Column(name = "discount")
+	private int discount = getDiscount();
 
 
-    @Column(name = "diagonal")
-    private int diagonal;
+	public DisplayEntity() {
+		this.type = "display";
 
-    @Column(name = "model")
-    private String model;
+	}
 
-    @Column(name = "discount")
-    private int discount;
+	public DisplayEntity(int diagonal, String model) {
 
-    {
+		this.diagonal = diagonal;
+
+		this.model = model;
+
+	}
+
+	public int getDiagonal() {
+		return diagonal;
+	}
+
+	public void setDiagonal(int diagonal) {
+		this.diagonal = diagonal;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public int getDiscount() {
+		return discount;
+	}
 
 
-    }
-    public DisplayEntity() {
-        this.type = "display";
+	public String getType() {
+		return type;
+	}
 
-    }
+	@Override
+	public String toString() {
+		return "DisplayEntity{" +
+				", id=" + id +
+				"diagonal=" + diagonal +
+				", model='" + model + '\'' +
+				", discount=" + discount +
+				", amount=" + amount +
+				", type='" + type + '\'' +
+				", producing_country='" + producing_country + '\'' +
+				", price=" + price +
+				'}';
+	}
 
-    public DisplayEntity(int diagonal, String model) {
-        this.type = "display";
 
-        this.diagonal = diagonal;
-        this.model = model;
-
-
-    }
-
-    public int getDiagonal() {
-        return diagonal;
-    }
-
-    public void setDiagonal(int diagonal) {
-        this.diagonal = diagonal;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public int getDiscount() {
-        return discount;
-    }
-
-    @Override
-    public String getType() {
-        return "display";
-    }
-
-    @Override
-    public String toString() {
-        return "DisplayEntity{" +
-                ", id=" + id +
-                "diagonal=" + diagonal +
-                ", model='" + model + '\'' +
-                ", discount=" + discount +
-                ", amount=" + amount +
-                ", type='" + type + '\'' +
-                ", producing_country='" + producing_country + '\'' +
-                ", price=" + price +
-                '}';
-    }
 }
