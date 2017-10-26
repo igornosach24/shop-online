@@ -1,4 +1,4 @@
-# shoponline
+# Shop-Online
 Online shop.
 Types of goods on sale: input devices, displays, accessories,
 storage devices, peripherals.
