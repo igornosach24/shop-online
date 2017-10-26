@@ -8,14 +8,17 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "product")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class AProductEntity extends ABaseDaoEntity implements Serializable {
+public abstract class   AProductEntity extends ABaseDaoEntity implements Serializable {
 
 	private static final long serialVersionUID = -695503064509648117L;
 
+	@Transient
 	protected final int DEFAULT_DISCOUNT_FOR_ALL_PRODUCTS = 5;
 
+	@Transient
 	protected final DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();
 
+	@Transient
 	protected final String day = dayOfWeek.name();  // The current day of the week
 
 	@Id
