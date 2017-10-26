@@ -1,7 +1,6 @@
 package com.github.nosachigor23.shoponline.model;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -18,11 +17,13 @@ public class StorageDeviceEntity extends AProductEntity implements Serializable 
 	private int speed;
 
 	@Column(name = "discount")
-	private int discount = getDiscount();
+	private int discount;
 
+	{
+		this.type = "storage_device";
+	}
 
 	public StorageDeviceEntity() {
-		this.type = "storageDevice";
 
 	}
 
@@ -38,8 +39,19 @@ public class StorageDeviceEntity extends AProductEntity implements Serializable 
 		return manufacturer;
 	}
 
+	/*
+
+	Since the object is first created, and then the fields in the form of Thymeleaf are filled through the setters,
+	the value of the discount will change with each change of the given field (in this case - 'manufacturer').
+
+	 */
+
 	public void setManufacturer(String manufacturer) {
+
 		this.manufacturer = manufacturer;
+
+		this.discount = calculateDiscountForProduct();
+
 	}
 
 	public int getSpeed() {
@@ -56,18 +68,19 @@ public class StorageDeviceEntity extends AProductEntity implements Serializable 
 
 	@Override
 	public String toString() {
+
 		return "StorageDevice{" +
 				"manufacturer='" + manufacturer + '\'' +
 				", speed=" + speed +
 				", discount=" + discount +
-				", producing_country='" + producing_country + '\'' +
 				'}';
+
 	}
 
 	@Override
 	protected int calculateDiscountForProduct() {
 
-		if (!day.matches("THURSDAY|FRIDAY|SATURADY")){
+		if (!day.matches("THURSDAY|FRIDAY|SATURADY")) {
 
 			return 0;
 
@@ -75,21 +88,17 @@ public class StorageDeviceEntity extends AProductEntity implements Serializable 
 
 		final int defaultValue = 10;
 
-		final 	String manufacturer = getManufacturer();
+		final String manufacturer = getManufacturer();
 
 		if (manufacturer.equalsIgnoreCase("kingston")) {
 
 			return defaultValue / 2;
 
-		}
-
-		else if (manufacturer.equalsIgnoreCase("samsung")) {
+		} else if (manufacturer.equalsIgnoreCase("samsung")) {
 
 			return defaultValue / 3;
 
-		}
-
-		else return defaultValue;
+		} else return defaultValue;
 
 	}
 }

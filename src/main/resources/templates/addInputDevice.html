@@ -1,20 +1,20 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Add Person</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <h2 th:text="${edit} ? 'Edit product'  : 'Add input device'"></h2>
 <form action="#" th:action="@{/save}" th:object="${productInstance}" method="post">
-    <p>amount: <input type="text" th:field="*{amount}" /></p>
-    <p>price: <input type="text" th:field="*{price}" /></p>
+    <p>amount: <input type="text" th:field="*{amount}"/></p>
+    <p>price: <input type="text" th:field="*{price}"/></p>
     <p>producing_country: <input type="text" th:field="*{producing_country}"/></p>
-    <p>color: <input type="text" th:field="*{color}" /></p>
+    <p>color: <input type="text" th:field="*{color}"/></p>
     <input type="hidden" name="product" value="inputDevice"/>
-    <div  th:if="${edit}">
-        <input type="hidden" name="id" th:value="${productInstance.getId()}" />
+    <div th:if="${edit}">
+        <input type="hidden" name="id" th:value="${productInstance.getId()}"/>
     </div>
     <p><input type="submit" value="Submit"/></p>
 </form>

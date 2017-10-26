@@ -16,15 +16,21 @@ public class PeripheralsEntity extends AProductEntity implements Serializable {
 	private String info;
 
 	@Column(name = "discount")
-	private int discount;
+	private int discount = calculateDiscountForProduct();
 
+	{
 
-	public PeripheralsEntity(){
+		this.type = "peripherals";
+
+	}
+
+	public PeripheralsEntity() {
 	}
 
 	public PeripheralsEntity(String kind, String info) {
 
 		this.kind = kind;
+
 		this.info = info;
 
 	}
@@ -49,19 +55,30 @@ public class PeripheralsEntity extends AProductEntity implements Serializable {
 		return discount;
 	}
 
+	/*
+
+	The periphery has a default discount
+
+	 */
 
 	@Override
 	public String toString() {
-
-		return "PeripheralsEntity{" +
-				", id=" + id +
+		return "Peripherals{" +
 				"kind='" + kind + '\'' +
 				", info='" + info + '\'' +
 				", discount=" + discount +
-				", amount=" + amount +
-				", type='" + type + '\'' +
-				", producing_country='" + producing_country + '\'' +
-				", price=" + price +
 				'}';
 	}
+
+	@Override
+	protected int calculateDiscountForProduct() {
+
+		if (!day.matches("WEDNESDAY|THURSDAY")) {
+			return 0;
+		}
+
+		return DEFAULT_DISCOUNT_FOR_ALL_PRODUCTS;
+
+	}
+
 }

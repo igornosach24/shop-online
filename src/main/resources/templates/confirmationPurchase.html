@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -8,7 +8,8 @@
 <h3>Do you want to buy this product?</h3>
 <div>
     <table border="1">
-        <tr><th>Id</th>
+        <tr>
+            <th>Id</th>
             <th>Amount</th>
             <th>Date</th>
             <th>Discount</th>
@@ -29,9 +30,9 @@
 
     </table>
 
-        ...
+    ...
 
-    <td> <a th:href="@{/product/buy/yes/{id}/(id=${check.getId_product()})}">YES!</a></td>
+    <td><a th:href="@{/product/buy/yes/{id}/(id=${check.getId_product()})}">YES!</a></td>
 </div>
 
 </body>

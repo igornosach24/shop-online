@@ -1,12 +1,12 @@
 package com.github.nosachigor23.shoponline.model;
 
- enum ProductType {
+enum ProductType {
 
 	Accessories, Display, Input_device, Peripherals, Storage_device;
 
      /*
 
-    The function converts the value of the enumerated type to a string value.
+    The method converts the value of the enumerated type to a string value.
 
     */
 
@@ -28,4 +28,5 @@ package com.github.nosachigor23.shoponline.model;
 		}
 
 	}
+
 }

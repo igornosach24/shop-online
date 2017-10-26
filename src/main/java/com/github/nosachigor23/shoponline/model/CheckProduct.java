@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sold_products")
-public class CheckProduct implements Serializable {
+public class CheckProduct extends ABaseDaoEntity implements Serializable {
+
 	private static final long serialVersionUID = -6955030646638117L;
 
 	@Id
@@ -87,14 +88,23 @@ public class CheckProduct implements Serializable {
 		this.id_product = id_product;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
-		return ", priceForSale=" + priceForSale +
-				", dateSale=" + dateSale +
-				", info='" + info +
+		return "Check{" +
+				"dateSale=" + dateSale +
+				", info='" + info + '\'' +
 				", amount=" + amount +
 				", price=" + price +
 				", discount=" + discount +
+				", priceForSale=" + priceForSale +
 				", id_product=" + id_product +
 				'}';
 	}

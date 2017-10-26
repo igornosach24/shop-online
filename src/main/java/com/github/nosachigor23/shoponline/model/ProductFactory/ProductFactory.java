@@ -14,7 +14,7 @@ public class ProductFactory {
 
 		if (type == null || type.isEmpty()) {
 
-			String errMsg =  "Incorrect method argument value";
+			String errMsg = "Incorrect method argument value";
 
 			LOG.error(errMsg);
 
@@ -50,7 +50,7 @@ public class ProductFactory {
 
 		} else {
 
-			String errMsg =  "Incorrect type in factory";
+			String errMsg = "Incorrect type in factory";
 
 			LOG.error(errMsg);
 
