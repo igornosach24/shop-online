@@ -9,6 +9,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "input_device")
 public class InputDeviceEntity extends AProductEntity implements Serializable {
+	
+	private static final long serialVersionUID = -65951231237L;
 
 	@Column(name = "color")
 	private String color;
