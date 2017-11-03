@@ -8,6 +8,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "peripherals")
 public class PeripheralsEntity extends AProductEntity implements Serializable {
+	
+	private static final long serialVersionUID = -6595503124147L;
 
 	@Column(name = "kind")
 	private String kind;
