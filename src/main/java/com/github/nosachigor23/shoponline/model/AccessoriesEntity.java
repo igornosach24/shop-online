@@ -9,6 +9,8 @@ import java.io.Serializable;
 @Table(name = "accessories")
 public class AccessoriesEntity extends AProductEntity implements Serializable {
 
+	private static final long serialVersionUID = -65957457668648117L;
+	
 	@Column(name = "info")
 	private String info;
 
