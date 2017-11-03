@@ -52,8 +52,6 @@ public class ProductFactory {
 
 			String errMsg = "Incorrect type in factory";
 
-			LOG.error(errMsg);
-
 			throw new FactoryException(errMsg);
 
 		}
