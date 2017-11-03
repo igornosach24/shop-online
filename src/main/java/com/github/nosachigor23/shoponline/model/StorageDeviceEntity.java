@@ -8,7 +8,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "storage_device")
 public class StorageDeviceEntity extends AProductEntity implements Serializable {
-
+	
+	private static final long serialVersionUID = -12303645617L;
 
 	@Column(name = "manufacturer")
 	private String manufacturer;
