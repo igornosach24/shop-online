@@ -1,4 +1,6 @@
-package com.github.nosachigor23.shoponline.model;
+package com.github.nosachigor23.shopOnline.model;
+
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -7,8 +9,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "product")
+@EqualsAndHashCode
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class   AProductEntity extends ABaseDaoEntity implements Serializable {
+public abstract class   AProductEntity implements Serializable {
 
 	private static final long serialVersionUID = -695503064509648117L;
 

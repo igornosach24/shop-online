@@ -4,8 +4,13 @@
     <meta charset="UTF-8"/>
     <title>Add Person</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="container">
 <h2 th:text="${edit} ? 'Edit product'  : 'Add input device'"></h2>
 <form action="#" th:action="@{/save}" th:object="${productInstance}" method="post">
     <p>amount: <input type="text" th:field="*{amount}"/></p>
@@ -19,5 +24,6 @@
     <p><input type="submit" value="Submit"/></p>
 </form>
 <a th:href="@{/}">Back to home</a>
+</div>
 </body>
 </html>

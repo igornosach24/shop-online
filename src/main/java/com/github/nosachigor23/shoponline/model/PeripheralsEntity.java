@@ -1,4 +1,4 @@
-package com.github.nosachigor23.shoponline.model;
+package com.github.nosachigor23.shopOnline.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

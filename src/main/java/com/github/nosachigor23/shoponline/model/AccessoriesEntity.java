@@ -1,4 +1,4 @@
-package com.github.nosachigor23.shoponline.model;
+package com.github.nosachigor23.shopOnline.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,11 +28,8 @@ public class AccessoriesEntity extends AProductEntity implements Serializable {
 	}
 
 	public AccessoriesEntity(String info, String kind) {
-
 		this.info = info;
-
 		this.kind = kind;
-
 	}
 
 	public String getInfo() {
@@ -52,22 +49,15 @@ public class AccessoriesEntity extends AProductEntity implements Serializable {
 	}
 
 	/*
-
     For accessories, the discount is equal to the default value
-
 	 */
 
 	@Override
 	protected int calculateDiscountForProduct() {
-
 		if (!day.matches("SUNDAY|MONDAY|FRIDAY")) {
-
 			return 0;
-
 		}
-
 		return DEFAULT_DISCOUNT_FOR_ALL_PRODUCTS;
-
 	}
 
 	@Override

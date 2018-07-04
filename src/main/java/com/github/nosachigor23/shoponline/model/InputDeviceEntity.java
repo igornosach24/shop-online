@@ -1,4 +1,4 @@
-package com.github.nosachigor23.shoponline.model;
+package com.github.nosachigor23.shopOnline.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,13 +44,9 @@ public class InputDeviceEntity extends AProductEntity implements Serializable {
 	 */
 
 	public void setColor(String color) {
-
 		this.color = color;
-
 		this.discount = calculateDiscountForProduct();
-
 	}
-
 	public int getDiscount() {
 		return this.discount;
 	}
@@ -63,31 +59,21 @@ public class InputDeviceEntity extends AProductEntity implements Serializable {
 
 	@Override
 	public String toString() {
-
 		return "InputDevice{" +
 				"color='" + color + '\'' +
 				", discount=" + discount +
 				'}';
-
 	}
 
 	@Override
 	protected int calculateDiscountForProduct() {
-
 		if (!day.matches("TUESDAY|WEDNESDAY")) {
 			return 0;
 		}
-
 		if (getColor().equalsIgnoreCase("pink")) {
-
 			return 40;
-
 		} else {
-
 			return DEFAULT_DISCOUNT_FOR_ALL_PRODUCTS;
-
 		}
-
 	}
-
 }

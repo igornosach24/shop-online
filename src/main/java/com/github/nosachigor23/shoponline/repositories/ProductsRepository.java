@@ -1,9 +1,10 @@
-package com.github.nosachigor23.shoponline.repositories;
+package com.github.nosachigor23.shopOnline.repositories;
 
-import com.github.nosachigor23.shoponline.model.AProductEntity;
+import com.github.nosachigor23.shopOnline.model.AProductEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ProductsRepository extends CrudRepository<AProductEntity, Integer> {
+public interface ProductsRepository extends JpaRepository<AProductEntity, Integer> {
 
 	/*
 

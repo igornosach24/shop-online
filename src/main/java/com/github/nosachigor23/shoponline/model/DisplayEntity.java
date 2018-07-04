@@ -1,4 +1,4 @@
-package com.github.nosachigor23.shoponline.model;
+package com.github.nosachigor23.shopOnline.model;
 
 
 import javax.persistence.Column;
@@ -73,11 +73,8 @@ public class DisplayEntity extends AProductEntity implements Serializable {
 	}
 
 	/*
-
 	The discount depends on the diagonal of the screen.
-
 	 */
-
 	@Override
 	public String toString() {
 		return "Display{" +
@@ -89,9 +86,6 @@ public class DisplayEntity extends AProductEntity implements Serializable {
 
 	@Override
 	protected int calculateDiscountForProduct() {
-
 		return this.diagonal;
-
 	}
-
 }

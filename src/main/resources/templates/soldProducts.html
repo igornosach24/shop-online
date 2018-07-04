@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sold products</title>
+</head>
+<body>
+<div class="container">
+    <div>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>PriceForSale</th>
+                <th>Info</th>
+                <th>Discount</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Amount</th>
+            </tr>
+            <tr th:each="product : ${soldProducts}">
+                <td th:utext="${product.getId()}">...</td>
+                <td th:text="${product.getDateSale()}">...</td>
+                <td th:utext="${product.getPriceForSale()}">...</td>
+                <td th:utext="${product.getInfo()}">...</td>
+                <td th:utext="${product.getDiscount()}">...</td>
+                <td th:utext="${product.getAmount()}">...</td>
+                <td th:utext="${product.getPrice()}">...</td>
+                <td th:utext="${product.getAmount()}">...</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

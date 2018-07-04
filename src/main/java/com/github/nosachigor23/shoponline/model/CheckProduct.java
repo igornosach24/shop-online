@@ -1,4 +1,4 @@
-package com.github.nosachigor23.shoponline.model;
+package com.github.nosachigor23.shopOnline.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sold_products")
-public class CheckProduct extends ABaseDaoEntity implements Serializable {
+public class CheckProduct implements Serializable {
 
 	private static final long serialVersionUID = -6955030646638117L;
 

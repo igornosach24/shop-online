@@ -3,26 +3,46 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Person List</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 </head>
 <body>
-<h2 th:text="${complete} ? 'Successful purchase!'"></h2>
-<h1>Products List</h1>
-<form action="/addProduct" method="post">
-    <select name="product" title="product">
-        <option value="Display">Display</option>
-        <option value="Accessories">Accessories</option>
-        <option value="InputDevice">Input device</option>
-        <option value="Peripherals">Peripherals</option>
-        <option value="StorageDevice">Storage device</option>
-    </select>
-    <input type="submit" value="Create"/>
-</form>
-
-<a href="soldProducts">Sold products</a>
-<br/><br/>
-<div>
-    <table border="1">
+<div class="container-fluid">
+    <div class="row">
+        <h2 th:text="${complete} ? 'Successful purchase!'"></h2>
+    </div>
+    <div class="row justify-content-center">
+        <h1>Products List</h1>
+    </div>
+    <div class="row">
+        <div class="col">
+    <div class="form-check-lg">
+        <form action="/product/add" method="post" id="form1" >
+            <select name="product" title="product" class="form-select-button">
+                <option value="Display">Display</option>
+                <option value="Accessories">Accessories</option>
+                <option value="InputDevice">Input device</option>
+                <option value="Peripherals">Peripherals</option>
+                <option value="StorageDevice">Storage device</option>
+            </select>
+            <button type="submit" form="form1" value="Create" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+        </div>
+    </div>
+    <a href="soldProducts">Sold products</a>
+    <br/><br/>
+    <table class="table table-striped">
+        <thead class="thead-dark">
         <tr>
             <th>Id</th>
             <th>Type</th>
@@ -33,6 +53,7 @@
             <th>Delete</th>
             <th>Buy</th>
         </tr>
+        </thead>
         <tr th:each="product : ${products}">
             <td th:text="${product.getId()}">...</td>
             <td th:utext="${product.getType()}">...</td>
