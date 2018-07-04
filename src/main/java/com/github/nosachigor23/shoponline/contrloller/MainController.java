@@ -1,6 +1,6 @@
-package com.github.nosachigor23.shopOnline.contrloller;
+package com.github.nosachigor23.shoponline.contrloller;
 
-import com.github.nosachigor23.shopOnline.services.ProductService;
+import com.github.nosachigor23.shoponline.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

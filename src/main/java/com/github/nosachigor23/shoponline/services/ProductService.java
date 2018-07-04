@@ -1,10 +1,9 @@
-package com.github.nosachigor23.shopOnline.services;
+package com.github.nosachigor23.shoponline.services;
 
-import com.github.nosachigor23.shopOnline.exceptions.ProductNotFoundException;
-import com.github.nosachigor23.shopOnline.model.AProductEntity;
-import com.github.nosachigor23.shopOnline.repositories.ProductsRepository;
+import com.github.nosachigor23.shoponline.exceptions.ProductNotFoundException;
+import com.github.nosachigor23.shoponline.model.AProductEntity;
+import com.github.nosachigor23.shoponline.repositories.ProductsRepository;
 import lombok.NoArgsConstructor;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

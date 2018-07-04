@@ -1,8 +1,7 @@
-package com.github.nosachigor23.shopOnline.model.ProductFactory;
+package com.github.nosachigor23.shoponline.model.ProductFactory;
 
-import com.github.nosachigor23.shopOnline.model.*;
+import com.github.nosachigor23.shoponline.model.*;
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Component;
 
 public class ProductFactory {
 

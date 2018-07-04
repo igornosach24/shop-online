@@ -1,11 +1,10 @@
-package com.github.nosachigor23.shopOnline.services;
+package com.github.nosachigor23.shoponline.services;
 
-import com.github.nosachigor23.shopOnline.exceptions.ProductNotFoundException;
-import com.github.nosachigor23.shopOnline.model.AProductEntity;
-import com.github.nosachigor23.shopOnline.model.InputDeviceEntity;
-import com.github.nosachigor23.shopOnline.model.PeripheralsEntity;
-import com.github.nosachigor23.shopOnline.repositories.ProductsRepository;
-import com.sun.xml.internal.bind.v2.TODO;
+import com.github.nosachigor23.shoponline.exceptions.ProductNotFoundException;
+import com.github.nosachigor23.shoponline.model.AProductEntity;
+import com.github.nosachigor23.shoponline.model.InputDeviceEntity;
+import com.github.nosachigor23.shoponline.model.PeripheralsEntity;
+import com.github.nosachigor23.shoponline.repositories.ProductsRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

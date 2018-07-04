@@ -1,4 +1,4 @@
-package com.github.nosachigor23.shopOnline.model;
+package com.github.nosachigor23.shoponline.model;
 
 
 import javax.persistence.Column;

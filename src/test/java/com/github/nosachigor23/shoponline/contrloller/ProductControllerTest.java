@@ -1,8 +1,8 @@
-package com.github.nosachigor23.shopOnline.contrloller;
+package com.github.nosachigor23.shoponline.contrloller;
 
 
-import com.github.nosachigor23.shopOnline.model.*;
-import com.github.nosachigor23.shopOnline.services.ProductService;
+import com.github.nosachigor23.shoponline.model.*;
+import com.github.nosachigor23.shoponline.services.ProductService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -92,16 +92,6 @@ public class ProductControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
         verify(productService, times(1)).deleteProductById(displayEntity.getId());
-    }
-
-    @Test
-    public void testSaveProduct_ShouldInvokeDeleteMethodAndReturnStartingPage() throws Exception {
-        PeripheralsEntity peripheralsEntity = new PeripheralsEntity();
-        given(productService.getProductById(anyInt())).willReturn(peripheralsEntity);
-        mockMvc.perform(post("http://localhost:8080/product/save/").param("product","peripherals"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/"));
-        verify(productService, times(1)).saveOrUpdateProduct(peripheralsEntity);
     }
 
     private String getViewName(AProductEntity product) {

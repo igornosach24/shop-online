@@ -1,11 +1,10 @@
-package com.github.nosachigor23.shopOnline.contrloller;
+package com.github.nosachigor23.shoponline.contrloller;
 
-import com.github.nosachigor23.shopOnline.contrloller.MainController;
-import com.github.nosachigor23.shopOnline.model.AProductEntity;
-import com.github.nosachigor23.shopOnline.model.DisplayEntity;
-import com.github.nosachigor23.shopOnline.model.InputDeviceEntity;
-import com.github.nosachigor23.shopOnline.model.PeripheralsEntity;
-import com.github.nosachigor23.shopOnline.services.ProductService;
+import com.github.nosachigor23.shoponline.model.AProductEntity;
+import com.github.nosachigor23.shoponline.model.DisplayEntity;
+import com.github.nosachigor23.shoponline.model.InputDeviceEntity;
+import com.github.nosachigor23.shoponline.model.PeripheralsEntity;
+import com.github.nosachigor23.shoponline.services.ProductService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

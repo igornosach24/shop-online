@@ -1,4 +1,4 @@
-package com.github.nosachigor23.shopOnline;
+package com.github.nosachigor23.shoponline;
 
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;

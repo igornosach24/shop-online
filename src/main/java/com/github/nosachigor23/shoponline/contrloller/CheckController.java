@@ -1,9 +1,9 @@
-package com.github.nosachigor23.shopOnline.contrloller;
+package com.github.nosachigor23.shoponline.contrloller;
 
-import com.github.nosachigor23.shopOnline.model.AProductEntity;
-import com.github.nosachigor23.shopOnline.model.CheckProduct;
-import com.github.nosachigor23.shopOnline.repositories.CheckRepository;
-import com.github.nosachigor23.shopOnline.repositories.ProductsRepository;
+import com.github.nosachigor23.shoponline.model.AProductEntity;
+import com.github.nosachigor23.shoponline.model.CheckProduct;
+import com.github.nosachigor23.shoponline.repositories.CheckRepository;
+import com.github.nosachigor23.shoponline.repositories.ProductsRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

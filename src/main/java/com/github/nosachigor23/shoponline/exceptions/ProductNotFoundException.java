@@ -1,4 +1,4 @@
-package com.github.nosachigor23.shopOnline.exceptions;
+package com.github.nosachigor23.shoponline.exceptions;
 
 public class ProductNotFoundException extends RuntimeException {
     public ProductNotFoundException() {
