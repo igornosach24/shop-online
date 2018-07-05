@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-public class SaveController {
+public class ProductSaveController {
     @Autowired
-    private ProductService productService;
-    private static final Logger LOG = Logger.getLogger(SaveController.class);
+    private ProductService productServiceImp;
+    private static final Logger LOG = Logger.getLogger(ProductSaveController.class);
 
     @PostMapping("product/save")
     public String saveProduct(@ModelAttribute("productInstance") AProductEntity aProductEntity) {
-        productService.saveOrUpdateProduct(aProductEntity);
+        productServiceImp.saveOrUpdateProduct(aProductEntity);
         LOG.info(aProductEntity + "product was saved!");
         return "redirect:/";
     }
@@ -28,7 +28,7 @@ public class SaveController {
     public AProductEntity getProductInstance(@RequestParam(value = "product") String product,
                                              @RequestParam(value = "id", required = false) Integer editObjectId) {
         if (editObjectId != null) {
-            return productService.getProductById(editObjectId);
+            return productServiceImp.getProductById(editObjectId);
         } else {
             return ProductFactory.getProductInst(product);
         }

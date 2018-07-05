@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sold_products")
-public class CheckProduct implements Serializable {
+public class PurchaseCheck implements Serializable {
 
 	private static final long serialVersionUID = -6955030646638117L;
 
@@ -29,7 +29,7 @@ public class CheckProduct implements Serializable {
 	@Column(name = "id_product")
 	private int id_product;
 
-	public CheckProduct() {
+	public PurchaseCheck() {
 	}
 
 	public int getPriceForSale() {

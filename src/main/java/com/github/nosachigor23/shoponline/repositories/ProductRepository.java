@@ -3,7 +3,7 @@ package com.github.nosachigor23.shoponline.repositories;
 import com.github.nosachigor23.shoponline.model.AProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductsRepository extends JpaRepository<AProductEntity, Integer> {
+public interface ProductRepository extends JpaRepository<AProductEntity, Integer> {
 
 	/*
 

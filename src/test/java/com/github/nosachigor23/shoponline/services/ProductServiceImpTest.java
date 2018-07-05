@@ -4,7 +4,7 @@ import com.github.nosachigor23.shoponline.exceptions.ProductNotFoundException;
 import com.github.nosachigor23.shoponline.model.AProductEntity;
 import com.github.nosachigor23.shoponline.model.InputDeviceEntity;
 import com.github.nosachigor23.shoponline.model.PeripheralsEntity;
-import com.github.nosachigor23.shoponline.repositories.ProductsRepository;
+import com.github.nosachigor23.shoponline.repositories.ProductRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,16 +21,16 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-public class ProductServiceTest {
+public class ProductServiceImpTest {
 
     @Mock
-    private ProductsRepository repository;
+    private ProductRepository repository;
     private List<AProductEntity> productEntityList;
-    private ProductService productService;
+    private ProductService productServiceImp;
 
     @Before
     public void setUp() {
-        this.productService = new ProductService(repository);
+        this.productServiceImp = new ProductServiceImp(repository);
         this.productEntityList = new ArrayList<>();
         this.productEntityList.add(new PeripheralsEntity());
         this.productEntityList.add(new InputDeviceEntity());
@@ -39,14 +39,14 @@ public class ProductServiceTest {
     @Test
     public void testFindAllProducts_ShouldReturnAllProducts() {
         given(repository.findAll()).willReturn(productEntityList);
-        Assert.assertEquals(productEntityList, productService.getAllProducts());
+        Assert.assertEquals(productEntityList, productServiceImp.getAllProducts());
         verify(repository, times(1)).findAll();
-        Assert.assertTrue(productService.getAllProducts().size() > 0);
+        Assert.assertTrue(productServiceImp.getAllProducts().size() > 0);
     }
 
     @Test
     public void testFindAllProducts_ShouldReturnEmptyListIfProductsDoNotExist() {
-        Assert.assertEquals(productService.getAllProducts(), Collections.emptyList());
+        Assert.assertEquals(productServiceImp.getAllProducts(), Collections.emptyList());
         verify(repository, times(1)).findAll();
     }
 
@@ -57,7 +57,7 @@ public class ProductServiceTest {
 
         given(repository.findOne(inputDeviceEntity.getId())).willReturn(inputDeviceEntity);
 
-        AProductEntity productById = productService.getProductById(inputDeviceEntity.getId());
+        AProductEntity productById = productServiceImp.getProductById(inputDeviceEntity.getId());
 
         Assert.assertEquals(inputDeviceEntity, productById);
         Assert.assertEquals(productById.getAmount(), 10);
@@ -66,7 +66,7 @@ public class ProductServiceTest {
 
     @Test(expected = ProductNotFoundException.class)
     public void testFindOneProductById_ShouldThrowProductNotFoundExceptionIfProductDoesNotExist() {
-        productService.getProductById(1);
+        productServiceImp.getProductById(1);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class ProductServiceTest {
         InputDeviceEntity inputDeviceEntity = new InputDeviceEntity();
         inputDeviceEntity.setAmount(10);
         given(repository.exists(inputDeviceEntity.getId())).willReturn(true);
-        productService.deleteProductById(inputDeviceEntity.getId());
+        productServiceImp.deleteProductById(inputDeviceEntity.getId());
     }
 
     @Test(expected = ProductNotFoundException.class)
@@ -82,8 +82,17 @@ public class ProductServiceTest {
         InputDeviceEntity inputDeviceEntity = new InputDeviceEntity();
         inputDeviceEntity.setAmount(10);
         given(repository.exists(inputDeviceEntity.getId())).willReturn(false);
-        productService.deleteProductById(inputDeviceEntity.getId());
+        productServiceImp.deleteProductById(inputDeviceEntity.getId());
     }
+
+    @Test
+    public void testSaveOrUpdateProduct_ShouldSaveOrUpdateProduct() {
+        InputDeviceEntity inputDeviceEntity = new InputDeviceEntity();
+        inputDeviceEntity.setAmount(10);
+        given(repository.exists(inputDeviceEntity.getId())).willReturn(false);
+        productServiceImp.deleteProductById(inputDeviceEntity.getId());
+    }
+
 
     // TODO
     @Test(expected = ProductNotFoundException.class)

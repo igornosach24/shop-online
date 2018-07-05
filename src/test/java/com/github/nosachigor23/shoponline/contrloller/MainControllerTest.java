@@ -5,6 +5,7 @@ import com.github.nosachigor23.shoponline.model.DisplayEntity;
 import com.github.nosachigor23.shoponline.model.InputDeviceEntity;
 import com.github.nosachigor23.shoponline.model.PeripheralsEntity;
 import com.github.nosachigor23.shoponline.services.ProductService;
+import com.github.nosachigor23.shoponline.services.ProductServiceImp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +33,8 @@ public class MainControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private ProductService productService;
+    private ProductService productServiceImp;
+
     private List<AProductEntity> productEntityList;
 
     @Before
@@ -46,13 +48,13 @@ public class MainControllerTest {
     @Test
     public void getAllProducts_ShouldReturnViewWithProductsList() throws Exception {
 
-        given(productService.getAllProducts()).willReturn(productEntityList);
+        given(productServiceImp.getAllProducts()).willReturn(productEntityList);
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("text/html;charset=UTF-8"))
                 .andExpect(view().name("index"))
                 .andExpect(model().attribute("products", equalTo(productEntityList)));
-        verify(productService, times(1)).getAllProducts();
+        verify(productServiceImp, times(1)).getAllProducts();
     }
 }
