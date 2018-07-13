@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import static org.mockito.Mockito.verify;
 public class ProductServiceImpTest {
 
     @Mock
-    private ProductRepository repository;
+    private JpaRepository<AProductEntity,Integer> repository;
     private List<AProductEntity> productEntityList;
     private ProductService productServiceImp;
 
@@ -89,13 +90,12 @@ public class ProductServiceImpTest {
     public void testSaveOrUpdateProduct_ShouldSaveOrUpdateProduct() {
         InputDeviceEntity inputDeviceEntity = new InputDeviceEntity();
         inputDeviceEntity.setAmount(10);
-        given(repository.exists(inputDeviceEntity.getId())).willReturn(false);
+        given(repository.exists(inputDeviceEntity.getId())).willReturn(true);
         productServiceImp.deleteProductById(inputDeviceEntity.getId());
     }
 
 
     // TODO
-    @Test(expected = ProductNotFoundException.class)
     public void testCalculateDiscountForProductDependsOnType_ShouldReturnValidDiscountForProduct() {
 
     }

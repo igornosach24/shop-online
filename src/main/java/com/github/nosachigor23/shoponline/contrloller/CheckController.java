@@ -2,8 +2,6 @@ package com.github.nosachigor23.shoponline.contrloller;
 
 import com.github.nosachigor23.shoponline.model.AProductEntity;
 import com.github.nosachigor23.shoponline.model.PurchaseCheck;
-import com.github.nosachigor23.shoponline.repositories.CheckRepository;
-import com.github.nosachigor23.shoponline.repositories.ProductRepository;
 import com.github.nosachigor23.shoponline.services.ProductService;
 import com.github.nosachigor23.shoponline.services.PurchaseCheckService;
 import lombok.NoArgsConstructor;
@@ -13,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.time.LocalDateTime;
 
 @Controller
 @NoArgsConstructor

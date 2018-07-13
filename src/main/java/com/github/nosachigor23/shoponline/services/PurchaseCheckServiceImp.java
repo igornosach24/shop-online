@@ -3,25 +3,25 @@ package com.github.nosachigor23.shoponline.services;
 import com.github.nosachigor23.shoponline.Utils.TimeMachine;
 import com.github.nosachigor23.shoponline.model.AProductEntity;
 import com.github.nosachigor23.shoponline.model.PurchaseCheck;
-import com.github.nosachigor23.shoponline.repositories.CheckRepository;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.Clock;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.List;
 
 @Service
 @NoArgsConstructor
-@AllArgsConstructor
 public class PurchaseCheckServiceImp implements PurchaseCheckService {
+    private JpaRepository<PurchaseCheck, Integer> checkRepository;
     private ProductService productService;
-    private CheckRepository checkRepository;
+
+    public PurchaseCheckServiceImp(
+            @Qualifier("CheckRepository") JpaRepository<PurchaseCheck, Integer> checkRepository,
+            ProductService productService) {
+        this.checkRepository = checkRepository;
+        this.productService = productService;
+    }
 
     @Override
     public PurchaseCheck convertProductToCheck(AProductEntity productEntity) {

@@ -4,12 +4,6 @@ enum ProductType {
 
 	Accessories, Display, Input_device, Peripherals, Storage_device;
 
-     /*
-
-    The method converts the value of the enumerated type to a string value.
-
-    */
-
 	public static String convertEnumToString(ProductType productType) {
 
 		switch (productType) {

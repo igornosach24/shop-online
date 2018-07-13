@@ -2,7 +2,9 @@ package com.github.nosachigor23.shoponline.repositories;
 
 import com.github.nosachigor23.shoponline.model.AProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository(value = "ProductRepository")
 public interface ProductRepository extends JpaRepository<AProductEntity, Integer> {
 
 	/*

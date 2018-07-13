@@ -5,6 +5,9 @@ import com.github.nosachigor23.shoponline.model.AProductEntity;
 import com.github.nosachigor23.shoponline.repositories.ProductRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +16,10 @@ import java.util.List;
 @NoArgsConstructor
 public class ProductServiceImp implements ProductService {
 
-    private ProductRepository repository;
+    private JpaRepository<AProductEntity, Integer> repository;
 
     @Autowired
-    public ProductServiceImp(ProductRepository repository) {
+    public ProductServiceImp(@Qualifier("ProductRepository") JpaRepository<AProductEntity,Integer> repository) {
         this.repository = repository;
     }
 
@@ -46,7 +49,7 @@ public class ProductServiceImp implements ProductService {
 
     }
 
-    private int calcualateDyscontForProduct(){
+    private int calcualateDyscontForProduct() {
         return 0;
     }
 }
